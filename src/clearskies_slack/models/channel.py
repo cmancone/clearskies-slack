@@ -1,6 +1,7 @@
 import clearskies
 from clearskies.column_types import string
 from collections import OrderedDict
+from typing import Any, Dict
 
 
 class Channel(clearskies.Model):
@@ -9,7 +10,7 @@ class Channel(clearskies.Model):
 
     @classmethod
     def table_name(cls) -> str:
-        return "conversations.list"
+        return "conversations"
 
     def columns_configuration(self) -> Dict[str, Any]:
         return OrderedDict(

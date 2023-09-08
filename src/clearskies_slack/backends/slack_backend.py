@@ -1,6 +1,7 @@
 import clearskies
 import requests
 from typing import Dict, Any, List, Callable
+import urllib
 
 
 class SlackBackend(clearskies.backends.ApiBackend):
@@ -24,7 +25,7 @@ class SlackBackend(clearskies.backends.ApiBackend):
         if url_params:
             suffix += "?" + urllib.parse.urlencode(url_params)
 
-        return [f"{self.url}/{table_name}{suffix}", "GET", {}, {}]
+        return [f"{self.url}/{table_name}.list{suffix}", "GET", {}, {}]
 
     def _map_records_response(self, records: Any) -> List[Dict[str, Any]]:
         # we get here if we hit the list endpoint
